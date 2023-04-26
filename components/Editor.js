@@ -17,7 +17,7 @@ export default () => {
 
   useEffect(() => {
     const provider = new HocuspocusProvider({
-      url: "wss://0.0.0.0:1234",
+      url: `wss://${process.env.NEXT_PUBLIC_VERCEL_URL}:1234`,
       name: "hocuspocus-fra1-01",
 
       onDisconnect: () => {
