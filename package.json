@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hocuspocus/provider": "^2.0.6",
+    "@hocuspocus/server": "^2.0.6",
+    "@tiptap/extension-collaboration": "^2.0.3",
+    "@tiptap/extension-collaboration-cursor": "^2.0.3",
     "@tiptap/extension-color": "^2.0.3",
     "@tiptap/extension-list-item": "^2.0.3",
     "@tiptap/extension-text-align": "^2.0.3",
@@ -23,7 +27,11 @@
     "postcss": "8.4.22",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "tailwindcss": "3.3.1"
+    "tailwindcss": "3.3.1",
+    "y-prosemirror": "^1.2.1",
+    "y-protocols": "^1.0.5",
+    "y-websocket": "^1.5.0",
+    "yjs": "^13.6.0"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.9"

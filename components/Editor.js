@@ -3,201 +3,60 @@ import ListItem from '@tiptap/extension-list-item'
 import TextStyle from '@tiptap/extension-text-style'
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
-import React from 'react'
-import {
-  Heading1,
-  Heading2,
-  Heading3,
-  Heading4,
-  Heading5,
-  Heading6,
-  Text,
-  Undo2,
-  Redo2,
-  SeparatorHorizontal,
-  Bold,
-  Italic,
-  Strikethrough,
-  Code,
-  List,
-  ListOrdered,
-  Quote,
-  CurlyBraces
-} from "lucide-react";
-
-const MenuBar = ({ editor }) => {
-  if (!editor) {
-    return null
-  }
-
-  return (
-    <div className="">
-      <button
-        onClick={() => editor.chain().focus().toggleBold().run()}
-        disabled={
-          !editor.can()
-            .chain()
-            .focus()
-            .toggleBold()
-            .run()
-        }
-        className={`btn-primary ${editor.isActive('bold') ? 'is-active' : ''}`}
-      >
-        <Bold size={18}/>
-      </button>
-      <button
-        onClick={() => editor.chain().focus().toggleItalic().run()}
-        disabled={
-          !editor.can()
-            .chain()
-            .focus()
-            .toggleItalic()
-            .run()
-        }
-        className={`btn-primary ${editor.isActive('italic') ? 'is-active' : ''}`}
-      >
-        <Italic size={18}/>
-      </button>
-      <button
-        onClick={() => editor.chain().focus().toggleStrike().run()}
-        disabled={
-          !editor.can()
-            .chain()
-            .focus()
-            .toggleStrike()
-            .run()
-        }
-        className={`btn-primary ${editor.isActive('strike') ? 'is-active' : ''}`}
-      >
-        <Strikethrough size={18}/>
-      </button>
-      <button
-        onClick={() => editor.chain().focus().toggleCode().run()}
-        disabled={
-          !editor.can()
-            .chain()
-            .focus()
-            .toggleCode()
-            .run()
-        }
-        className={`btn-primary ${editor.isActive('code') ? 'is-active' : ''}`}
-      >
-        <Code size={18}/>
-      </button>
-      <button
-        onClick={() => editor.chain().focus().setParagraph().run()}
-        className={`btn-primary ${editor.isActive('paragraph') ? 'is-active' : ''}`}
-      >
-        <Text size={18}/>
-      </button>
-      <button
-        onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
-        className={`btn-primary ${editor.isActive('heading', { level: 1 }) ? 'is-active' : ''}`}
-      >
-        <Heading1 size={18}/>
-      </button>
-      <button
-        onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
-        className={`btn-primary ${editor.isActive('heading', { level: 2 }) ? 'is-active' : ''}`}
-      >
-        <Heading2 size={18}/>
-      </button>
-      <button
-        onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
-        className={`btn-primary ${editor.isActive('heading', { level: 3 }) ? 'is-active' : ''}`}
-      >
-        <Heading3 size={18}/>
-      </button>
-      <button
-        onClick={() => editor.chain().focus().toggleHeading({ level: 4 }).run()}
-        className={`btn-primary ${editor.isActive('heading', { level: 4 }) ? 'is-active' : ''}`}
-      >
-        <Heading4 size={18}/>
-      </button>
-      <button
-        onClick={() => editor.chain().focus().toggleHeading({ level: 5 }).run()}
-        className={`btn-primary ${editor.isActive('heading', { level: 5 }) ? 'is-active' : ''}`}
-      >
-        <Heading5 size={18}/>
-      </button>
-      <button
-        onClick={() => editor.chain().focus().toggleHeading({ level: 6 }).run()}
-        className={`btn-primary ${editor.isActive('heading', { level: 6 }) ? 'is-active' : ''}`}
-      >
-        <Heading6 size={18}/>
-      </button>
-      <button
-        onClick={() => editor.chain().focus().toggleBulletList().run()}
-        className={`btn-primary ${editor.isActive('bulletList') ? 'is-active' : ''}`}
-      >
-        <List size={18}/>
-      </button>
-      <button
-        onClick={() => editor.chain().focus().toggleOrderedList().run()}
-        className={`btn-primary ${editor.isActive('orderedList') ? 'is-active' : ''}`}
-      >
-        <ListOrdered size={18} />
-      </button>
-      <button
-        onClick={() => editor.chain().focus().toggleCodeBlock().run()}
-        className={`btn-primary ${editor.isActive('codeBlock') ? 'is-active' : ''}`}
-      >
-        <CurlyBraces size={18} />
-      </button>
-      <button
-        onClick={() => editor.chain().focus().toggleBlockquote().run()}
-        className={`btn-primary ${editor.isActive('blockquote') ? 'is-active' : ''}`}
-      >
-        <Quote size={18}/>
-      </button>
-      <button onClick={() => editor.chain().focus().setHorizontalRule().run()} className="btn-primary">
-        <SeparatorHorizontal size={18} />
-      </button>
-      {/*<button onClick={() => editor.chain().focus().setHardBreak().run()} className="btn-primary">*/}
-      {/*  hard break*/}
-      {/*</button>*/}
-      <button
-        onClick={() => editor.chain().focus().undo().run()}
-        disabled={
-          !editor.can()
-            .chain()
-            .focus()
-            .undo()
-            .run()
-        }
-        className="btn-primary cursor-pointer"
-      >
-        <Undo2 size={18} />
-      </button>
-      <button
-        onClick={() => editor.chain().focus().redo().run()}
-        disabled={
-          !editor.can()
-            .chain()
-            .focus()
-            .redo()
-            .run()
-        }
-        className="btn-primary cursor-pointer"
-      >
-        <Redo2 size={18}/>
-      </button>
-      {/*<button*/}
-      {/*  onClick={() => editor.chain().focus().setColor('#958DF1').run()}*/}
-      {/*  className={`btn-primary ${editor.isActive('textStyle', { color: '#958DF1' }) ? 'is-active' : ''}`}*/}
-      {/*>*/}
-      {/*  purple*/}
-      {/*</button>*/}
-    </div>
-  )
-}
+import React, {useEffect, useMemo, useState} from 'react'
+import MenuBar from "@/components/Menubar";
+import {Collaboration} from "@tiptap/extension-collaboration";
+import {HocuspocusProvider} from "@hocuspocus/provider";
 
 export default () => {
+  const [hocusProvider, setHocusProvider] = useState(null)
+
+  useEffect(() => {
+    fetch('api/hello')
+  }, [])
+
+  useEffect(() => {
+    const provider = new HocuspocusProvider({
+      url: "ws://0.0.0.0:1234",
+      name: "hocuspocus-fra1-01",
+
+      onDisconnect: () => {
+        // provider.on('destroy', event => {
+        //   console.log('yoo')
+        //   console.log(event.status)
+        // })
+        // close()
+      }
+    });
+
+    setHocusProvider(provider)
+
+    provider.on('status', event => {
+      console.log(event.status) // logs "connected" or "disconnected"
+    })
+
+    return () => {
+      console.log('yoo')
+      provider.on('destroy', event => {
+        console.log('yoo')
+        console.log(event.status)
+      })
+    }
+  }, [])
+
+  if (hocusProvider) {
+    return <Editor provider={hocusProvider}/>
+  }
+}
+
+
+function Editor({ provider }) {
   const editor = useEditor({
     extensions: [
       Color.configure({ types: [TextStyle.name, ListItem.name] }),
       TextStyle.configure({ types: [ListItem.name] }),
       StarterKit.configure({
+        history: false,
         bulletList: {
           keepMarks: true,
           keepAttributes: false, // TODO : Making this as `false` becase marks are not preserved when I try to preserve attrs, awaiting a bit of help
@@ -207,14 +66,17 @@ export default () => {
           keepAttributes: false, // TODO : Making this as `false` becase marks are not preserved when I try to preserve attrs, awaiting a bit of help
         },
       }),
+      Collaboration.configure({
+        document: provider.document
+      })
     ],
     editorProps: {
       attributes: {
-        class: 'p-2 border border-white rounded mt-4 prose dark:prose-invert text-white max-w-none'
+        class: 'p-4 border border-black rounded mt-4 prose bg-white max-w-none'
       }
     },
     content: `
-      <h2 class="text-white">
+      <h2>
         Hi there,
       </h2>
       <p>
