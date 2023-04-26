@@ -12,12 +12,8 @@ export default () => {
   const [hocusProvider, setHocusProvider] = useState(null)
 
   useEffect(() => {
-    fetch('api/hello')
-  }, [])
-
-  useEffect(() => {
     const provider = new HocuspocusProvider({
-      url: `wss://${process.env.NEXT_PUBLIC_VERCEL_URL}:1234`,
+      url: `ws://0.0.0.0:1234`,
       name: "hocuspocus-fra1-01",
 
       onDisconnect: () => {
